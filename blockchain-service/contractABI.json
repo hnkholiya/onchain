@@ -1,0 +1,39 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "uniqueId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "hashValue",
+				"type": "string"
+			}
+		],
+		"name": "storeDocument",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "uniqueId",
+				"type": "string"
+			}
+		],
+		"name": "verifyDocument",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
