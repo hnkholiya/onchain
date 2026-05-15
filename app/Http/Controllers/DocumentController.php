@@ -34,16 +34,40 @@ class DocumentController extends Controller
         // Generate Unique ID
         $uniqueId = 'PRM-' . strtoupper(Str::random(6));
 
+        // Blockchain Script Path
+        $scriptPath = base_path('blockchain-service/store.js');
+
+        // Full Node.js Path
+        $nodePath = 'C:\\Program Files\\nodejs\\node.exe';
+
+        // Build Command
+        $command =
+            '"' . $nodePath . '" "' .
+            $scriptPath . '" "' .
+            $uniqueId . '" "' .
+            $hash . '"';
+
+        // Execute Command
+        $output = [];
+
+        $returnVar = 0;
+
+        exec($command, $output, $returnVar);
+
+        $txHash = trim($output[0] ?? '');
+
         // Save in DB
         Document::create([
             'unique_id' => $uniqueId,
             'file_name' => $file->getClientOriginalName(),
             'hash' => $hash,
+            'tx_hash' => $txHash
         ]);
 
         return view('success', [
             'uniqueId' => $uniqueId,
-            'hash' => $hash
+            'hash' => $hash,
+            'txHash' => $txHash
         ]);
     }
 }

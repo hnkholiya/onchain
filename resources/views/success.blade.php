@@ -29,6 +29,14 @@
             </div>
         </div>
 
+        <div class="mt-4">
+            <p class="font-semibold">Transaction Hash:</p>
+
+            <div class="bg-gray-100 p-3 rounded mt-2 break-all text-sm">
+                {{ $txHash }}
+            </div>
+        </div>
+
     </div>
 
 </body>

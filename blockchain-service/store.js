@@ -1,4 +1,8 @@
-require('dotenv').config();
+require('dotenv').config({
+    path: __dirname + '/.env',
+    quiet: true
+});
+
 
 const { ethers } = require('ethers');
 
@@ -21,21 +25,25 @@ const contract = new ethers.Contract(
 
 async function store() {
 
-    const uniqueId = process.argv[2];
+    try {
 
-    const hash = process.argv[3];
+        const uniqueId = process.argv[2];
 
-    const tx = await contract.storeDocument(
-        uniqueId,
-        hash
-    );
+        const hash = process.argv[3];
 
-    console.log("Transaction Sent:");
-    console.log(tx.hash);
+        const tx = await contract.storeDocument(
+            uniqueId,
+            hash
+        );
 
-    await tx.wait();
+        await tx.wait();
 
-    console.log("Stored Successfully");
+        process.stdout.write(tx.hash);
+
+    } catch(error) {
+
+        process.stdout.write("ERROR");
+    }
 }
 
 store();
