@@ -10,7 +10,7 @@
     <div class="bg-white p-8 rounded-xl shadow w-full max-w-md">
 
         <h1 class="text-2xl font-bold mb-6 text-center">
-            Pramaan Upload
+            Upload Document
         </h1>
 
         <form action="/upload" method="POST" enctype="multipart/form-data">

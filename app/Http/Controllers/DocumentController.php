@@ -70,4 +70,55 @@ class DocumentController extends Controller
             'txHash' => $txHash
         ]);
     }
+
+
+
+    public function verifyPage()
+    {
+        return view('verify');
+    }
+
+    public function verifyDocument(Request $request)
+    {
+        $request->validate([
+            'unique_id' => 'required'
+        ]);
+
+        $uniqueId = $request->unique_id;
+
+        // Verify Script Path
+        $scriptPath = base_path('blockchain-service/verify.js');
+
+        // Node Path
+        $nodePath = 'C:\\Program Files\\nodejs\\node.exe';
+
+        // Build Command
+        $command =
+            '"' . $nodePath . '" "' .
+            $scriptPath . '" "' .
+            $uniqueId . '"';
+
+        // Execute
+        $output = [];
+
+        $returnVar = 0;
+
+        exec($command, $output, $returnVar);
+
+        $result = trim($output[0] ?? '');
+
+        if ($result && $result !== 'ERROR') {
+
+            $status = 'VALID';
+        } else {
+
+            $status = 'INVALID';
+        }
+
+        return view('verify-result', [
+            'status' => $status,
+            'uniqueId' => $uniqueId,
+            'hash' => $result
+        ]);
+    }
 }
