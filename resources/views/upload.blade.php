@@ -5,9 +5,12 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-gray-100 min-h-screen">
 
-    <div class="bg-white p-8 rounded-xl shadow w-full max-w-md">
+    @include('components.navbar')
+
+    <div class="flex items-center justify-center min-h-[calc(100vh-80px)]">
+        <div class="bg-white p-8 rounded-xl shadow w-full max-w-md">
 
         <h1 class="text-2xl font-bold mb-6 text-center">
             Upload Document
@@ -28,6 +31,7 @@
             </button>
         </form>
 
+        </div>
     </div>
 
 </body>

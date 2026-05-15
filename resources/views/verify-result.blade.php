@@ -3,9 +3,12 @@
 <head>
     @vite(['resources/css/app.css'])
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-gray-100 min-h-screen">
 
-<div class="bg-white p-8 rounded-xl shadow w-full max-w-lg text-center">
+    @include('components.navbar')
+
+    <div class="flex items-center justify-center min-h-[calc(100vh-80px)]">
+        <div class="bg-white p-8 rounded-xl shadow w-full max-w-lg text-center">
 
     @if($status === 'VALID')
 
@@ -35,7 +38,8 @@
 
     @endif
 
-</div>
+        </div>
+    </div>
 
 </body>
 </html>
