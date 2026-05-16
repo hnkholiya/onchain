@@ -13,6 +13,10 @@
                 Home
             </a>
 
+            <a href="/upload" class="text-gray-700 hover:text-black font-medium">
+                Upload
+            </a>
+
             <a href="/verify" class="text-gray-700 hover:text-black font-medium">
                 Verify
             </a>
